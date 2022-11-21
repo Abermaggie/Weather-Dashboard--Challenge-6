@@ -16,13 +16,13 @@
             <h3>Search for a City:
             <div class="textForm">
                 <form class="inputContainer">
-                    <input type="text" id="userInput" name="userInput" placeholder="San Diego"><br>
+                    <input id="userInput" type="text"  class="userInput" name="userInput" placeholder="San Diego"><br>
                     <input type="button" value="search" id="searchBtn" class="searchBtn">
                 </form>
             </h3>
             <div class="btnOne">
                 <div class="btnContainer">
-                    <button id="cityBtn">Atlanta</button>
+                    <button id="cityBtn" class="atlBTN">Atlanta</button>
                 </div>
             </div>
             <div class="btnOne">
@@ -67,7 +67,7 @@
     <div class="jumboTron">
         <div class="currentContainer">
             <div class="CurrentCity">
-            <h2 class="currentChoice"><span class="currentHead">Atlanta</span>
+            <h2 class="currentChoice"><span id="currentHead"></span>
                 <p class="currentStats"><span class="currentTemp">Temp:</span><br><br>
                 <span class="currentWind">Wind:</span><br><br>
                 <span class="currentHum">Hum:</span><br><br>
@@ -86,6 +86,11 @@
             <div class="fcFive"></div>
         </div>
     </div>
-
+    <!-- jquery library is linked so that js can use jquery methods/elements. -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Moment.js has been linked so we can use the number formats contained in this library. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- Link to document's javascript file for interactive functionality. -->
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>

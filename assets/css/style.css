@@ -123,6 +123,8 @@ span {
     width: 13%;
     background-color: rgb(4, 4, 83);
     color: white;
+    font-weight: bolder;
+    font-size: 20px;
 }
 .foreHeader {
     height:40px;

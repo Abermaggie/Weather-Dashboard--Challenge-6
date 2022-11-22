@@ -1,35 +1,34 @@
-var APIKey="b5b6d46bc2a008c2b2f805f1629fc911";
+var APIkey="a43777f985f5f6fe7bee6789245c882a";
 // Store user input from search bar in this variable//
-var city;
-var state;
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}";
+// var city;
+let searchBtn= document.getElementById('searchBtn');
+// var state;
+// var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIkey}&units=imperial`
+// var queryTodayURL= `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a43777f985f5f6fe7bee6789245c882a`
 // This date will be next to the current city box//
-var currentDate= moment().format('MM' + "/" + 'DD'+ "/" + 'YYYY');
-// var formInput = $('.userInput');
+var currentDate= moment().format('MM/DD/YYYY');
+var formInput= document.getElementById('userInput');
 
-const inpKey= document.getElementById("userInput");
-const btnInsert= document.getElementById("searchBtn");
-const lsOutput= document.getElementsByClassName("currentHead");
+currentHead.innerHTML= currentDate;
+fcOne.innerHTML= moment().add(1,'days').format('MM/DD/YYYY');
+fcTwo.innerHTML= moment().add(2,'days').format('MM/DD/YYYY');
+fcThree.innerHTML= moment().add(3,'days').format('MM/DD/YYYY');
+fcFour.innerHTML= moment().add(4,'days').format('MM/DD/YYYY');
+fctFive.innerHTML= moment().add(5,'days').format('MM/DD/YYYY');
 
-btnInsert.onclick = function() {
-    
-    const key = inpKey.value;
-    var currentDate= moment().format('MM' + "/" + 'DD'+ "/" + 'YYYY');
-    if(key) {
-        localStorage.setItem(key, currentDate);
-        location.reload();
-    }
-};
 
-for (let i=0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    const value =localStorage.getItem(key);
-    currentHead.innerHTML += `${key}: ${currentDate}`;
+searchBtn.addEventListener('click', function () {
+    let formEntry= formInput.value;
+    localStorage.setItem('searchCry', JSON.stringify(formEntry));
+    window.localStorage.getitem('searchCry');
+})
+
+function pullStorage() {
+var city= JSON.parse(localStorage.getItem('searchCry'));
+var formEntry= formInput.value;
+if(city) {
+    currentHead.innerHTML= city + " " +currentDate;
 }
-function clearKey() {
-    localStorage.removeItem(key);
 }
 
-clearKey();
-
-
+console.log(pullStorage());

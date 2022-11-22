@@ -18,17 +18,18 @@ fctFive.innerHTML= moment().add(5,'days').format('MM/DD/YYYY');
 
 
 searchBtn.addEventListener('click', function () {
+    pullStorage();
     let formEntry= formInput.value;
     localStorage.setItem('searchCry', JSON.stringify(formEntry));
-    window.localStorage.getitem('searchCry');
 })
 
 function pullStorage() {
 var city= JSON.parse(localStorage.getItem('searchCry'));
 var formEntry= formInput.value;
 if(city) {
-    currentHead.innerHTML= city + " " +currentDate;
+    currentHead.innerHTML= city + " " + currentDate;
+    var queryTodayURL= `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a43777f985f5f6fe7bee6789245c882a`
+    fetch(queryTodayURL)
+};
 }
-}
-
-console.log(pullStorage());
+pullStorage()

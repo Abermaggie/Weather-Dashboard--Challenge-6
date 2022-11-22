@@ -141,3 +141,13 @@ span {
 }
 
 
+#dateOne {
+    font-size: 20px;
+}
+
+li{
+    display: flex;
+    margin-top: 5%;
+    font-Size: 15px;
+
+}

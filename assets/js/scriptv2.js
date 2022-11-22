@@ -9,11 +9,11 @@ var currentDate= moment().format('MM/DD/YYYY');
 var formInput= document.getElementById('userInput');
 
 currentHead.innerHTML= currentDate;
-fcOne.innerHTML= moment().add(1,'days').format('MM/DD/YYYY');
-fcTwo.innerHTML= moment().add(2,'days').format('MM/DD/YYYY');
-fcThree.innerHTML= moment().add(3,'days').format('MM/DD/YYYY');
-fcFour.innerHTML= moment().add(4,'days').format('MM/DD/YYYY');
-fctFive.innerHTML= moment().add(5,'days').format('MM/DD/YYYY');
+// fcOne.innerHTML= moment().add(1,'days').format('MM/DD/YYYY');
+// fcTwo.innerHTML= moment().add(2,'days').format('MM/DD/YYYY');
+// fcThree.innerHTML= moment().add(3,'days').format('MM/DD/YYYY');
+// fcFour.innerHTML= moment().add(4,'days').format('MM/DD/YYYY');
+// fctFive.innerHTML= moment().add(5,'days').format('MM/DD/YYYY');
 
 
 searchBtn.addEventListener('click', function () {
@@ -67,11 +67,16 @@ function weatherWeek() {
         return response.json();
     })
     .then(function(data) {
-        fcOne.innerHTML= moment().add(1,'days').format('MM/DD/YYYY') 
-        dayOneimg.innerHTML="IMG";
-        dayOneTemp.innerHTML=""
-    })
-};
+        console.log(data);
+        var i=0;
+        dateOne.innerHTML= moment().add(1,'days').format('MM/DD/YYYY');
+        dayOneimg.innerHTML=("http://openweathermap.org/img/wn/" + data.list[0].weather[0].icon + "@2x.png"); 
+        console.log(data.list[0].weather[0].icon)
+        dayOneTemp.innerHTML="Temp: " + data.list[i].main.temp + "°F";
+        dayOneWind.innerHTML="Wind: " + data.list[i].wind.speed + " MPH";
+        dayOneHum.innerHTML= "Humidity: " + data.list[i].main.humidity+ "%";
+})
+}
 
 
     

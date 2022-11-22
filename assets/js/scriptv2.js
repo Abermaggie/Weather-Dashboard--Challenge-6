@@ -33,23 +33,7 @@ if(city) {
 
 function weather() {
     let city= JSON.parse(localStorage.getItem('searchCry'));
-    let weatherURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIkey}&units=imperial`
-    let weatherURLToday = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}&units=imperial`
 
-    fetch(weatherURL)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-    })
-    fetch(weatherURLToday)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function(data) {
-        console.log(data);
-    })
 }
 
 function displayForecast(forecastData) {
@@ -62,6 +46,7 @@ function displayForecast(forecastData) {
     })
 }
 
+
 function weatherToday () {
     let weatherURLToday = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}&units=imperial`
     fetch(weatherURLToday)
@@ -69,12 +54,24 @@ function weatherToday () {
         return response.json();
     })
     .then(function(data) {
-        currentIcon.innerHTML="src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+        // currentIcon.innerHTML="src", ;
         currentTemp.innerHTML="Temp: " + data.main.temp + "°F";
         currentWind.innerHTML="Wind: " + data.wind.speed + " MPH";
         currentHum.innerHTML= "Humidity: " + data.main.humidity+ "%";
     })
-}
+};
+function weatherWeek() {
+    let weatherURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIkey}&units=imperial`
+    fetch(weatherURL)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        fcOne.innerHTML= moment().add(1,'days').format('MM/DD/YYYY') 
+        dayOneimg.innerHTML="IMG";
+        dayOneTemp.innerHTML=""
+    })
+};
 
 
     
@@ -86,6 +83,7 @@ function weatherToday () {
 pullStorage();
 weather();
 weatherToday();
+weatherWeek();
 
 // filterForecast();
 
